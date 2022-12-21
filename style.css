@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Dongle&display=swap');
+
+html {
+    font-size: 18px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#app {
+    font-family: 'Dongle', sans-serif;
+    width: 320px;
+    background-color: rgb(171, 193, 209);
+    border-radius: 18px 18px 0px 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1+h3 {
+    text-align: right;
+    margin-right: 7px;
+}
+
+#inputshow {
+    border: 3px solid black;
+}
+
+#inputshow>div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#inputshow>div>span {
+    border: 3px solid black;
+    background-color: white;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    text-align: center;
+    font-size: 3.6rem;
+}
+
+#inputshow>p {
+    font-size: 1.5rem;
+    margin: 5px;
+    height: 35px;
+    color: red;
+    text-align: center;
+}
+
+ul {
+    max-height: 320px;
+    overflow: auto;
+}
+
+ul>li {
+    font-size: 1.2rem;
+    right: 0px;
+    position: relative;
+    list-style-type: none;
+    border-radius: 8px;
+    background-color: rgb(234, 234, 234);
+    margin-bottom: 10px;
+}
+
+ul>li>p {
+    margin: 3px 10px;
+}
+
+ul>.guide {
+    left: -20px;
+}
+
+ul>.guide::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 16px solid rgb(234, 234, 234);
+    border-left: 16px solid transparent;
+}
+
+ul>.input::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-bottom: 16px solid transparent;
+    border-left: 16px solid rgb(254, 229, 77);
+}
+
+ul>.input {
+    width: 50px;
+    right: -200px;
+    text-align: center;
+    background-color: rgb(254, 229, 77);
+}
+
+ul>.correct {
+    background-color: rgb(156, 255, 128);
+}
+
+ul>.correct::before {
+    border-top: 16px solid rgb(156, 255, 128);
+}
+
+form {
+    background-color: white;
+    position: absolute;
+}
+
+input {
+    font-size: 1.2em;
+    border: none;
+    height: 45px;
+    padding-left: 10px;
+}
+
+input[type="text"] {
+    width: 224px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    width: 80px;
+    border-radius: 8px;
+    background-color: rgb(254, 229, 77);
+}
