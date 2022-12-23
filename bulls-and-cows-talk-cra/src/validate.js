@@ -75,3 +75,23 @@ export function checkSubmittedInput(input) {
 
     return "none";
 }
+
+export function alertInvalidInput(validation) {
+    switch (validation) {
+        case "zerostart":
+            alert("숫자는 0으로 시작하지 않습니다.");
+            return;
+
+        case "number":
+            alert("입력이 숫자가 아닙니다.");
+            return;
+
+        case "redundancy":
+            alert("입력에 중복되는 자리수가 있습니다.");
+            return;
+
+        case "length":
+            alert("숫자는 3자리 자연수여야 합니다.");
+            return;
+    }
+}
