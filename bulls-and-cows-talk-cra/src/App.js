@@ -4,6 +4,7 @@ import Title from './Title';
 import InputShow from './InputShow';
 import TalkSpace from './TalkSpace';
 import FormDiv from './FormDiv';
+import { generateAnswer } from './Answer';
 
 function App() {
   return (
