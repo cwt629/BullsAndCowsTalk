@@ -29,6 +29,10 @@ h1+h3 {
   border: 3px solid black;
 }
 
+#inputshow>h2 {
+  margin: 5px 3px;
+}
+
 #inputshow>div {
   display: flex;
   justify-content: space-around;
@@ -53,7 +57,7 @@ h1+h3 {
 }
 
 ul {
-  max-height: 280px;
+  max-height: 300px;
   overflow: auto;
 }
 
