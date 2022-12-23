@@ -19,8 +19,8 @@ export function generateAnswer() {
 
 /**
  * 입력과 정답을 비교한 결과를 반환하는 함수
- * @param {string} input 
- * @param {number[]} answer 
+ * @param {string} input 입력
+ * @param {number[]} answer 실제 정답
  * @returns 비교 결과 객체
  */
 export function compareWithAnswer(input, answer) {
@@ -42,6 +42,12 @@ export function compareWithAnswer(input, answer) {
     return result;
 }
 
+/**
+ * 입력을 정답과 비교하여 그 결과를 문자열로 받아오는 함수
+ * @param {string} input 입력
+ * @param {number[]} answer 실제 정답
+ * @returns {string} 비교 결과
+ */
 export function getCompareResult(input, answer) {
     let messages = []
     const result = compareWithAnswer(input, answer); // 결과 받아오기

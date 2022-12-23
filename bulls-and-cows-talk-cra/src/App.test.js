@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { compareWithAnswer, getCompareResult } from './Answer';
+import { checkIntermediateInput } from './validate';
 import App from './App';
 
 // test('renders learn react link', () => {
@@ -63,5 +64,28 @@ describe('결과 출력 테스트', () => {
   test('아웃', () => {
     const input = "789";
     expect(getCompareResult(input, answer)).toBe("Out");
+  })
+})
+
+describe('입력 중간점검 테스트', () => {
+
+  test('0으로 시작', () => {
+    const input = "012";
+    expect(checkIntermediateInput(input)).toBe("zerostart");
+  })
+
+  test('숫자가 아닌 입력', () => {
+    const input = "1a";
+    expect(checkIntermediateInput(input)).toBe("number");
+  })
+
+  test('중복되는 자리수', () => {
+    const input = "121";
+    expect(checkIntermediateInput(input)).toBe("redundancy");
+  })
+
+  test('제대로 된 입력', () => {
+    const input = "123";
+    expect(checkIntermediateInput(input)).toBe("none");
   })
 })
