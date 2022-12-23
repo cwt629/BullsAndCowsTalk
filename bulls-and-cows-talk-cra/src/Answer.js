@@ -16,3 +16,22 @@ export function generateAnswer() {
 
     return answers;
 }
+
+export function compareWithAnswer(input, answer) {
+    let result = {
+        strike: 0,
+        ball: 0
+    };
+
+    for (let i = 0; i < input.length; i++) {
+        const currentInputDigit = parseInt(input.charAt(i));
+
+        // strike
+        if (currentInputDigit === answer[i]) result.strike++;
+
+        // ball
+        else if (answer.includes(currentInputDigit)) result.ball++;
+    }
+
+    return result;
+}
