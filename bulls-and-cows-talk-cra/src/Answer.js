@@ -17,6 +17,12 @@ export function generateAnswer() {
     return answers;
 }
 
+/**
+ * 입력과 정답을 비교한 결과를 반환하는 함수
+ * @param {string} input 
+ * @param {number[]} answer 
+ * @returns 비교 결과 객체
+ */
 export function compareWithAnswer(input, answer) {
     let result = {
         strike: 0,
@@ -34,4 +40,15 @@ export function compareWithAnswer(input, answer) {
     }
 
     return result;
+}
+
+export function getCompareResult(input, answer) {
+    let messages = []
+    const result = compareWithAnswer(input, answer); // 결과 받아오기
+
+    if (result.strike > 0) messages.push(`${result.strike} Strike`);
+    if (result.ball > 0) messages.push(`${result.ball} Ball`);
+
+    // 스트라이크나 볼 결과를 ,로 이어준다. 아무 결과도 없으면 Out.
+    return (messages.length > 0) ? messages.join(", ") : "Out";
 }
