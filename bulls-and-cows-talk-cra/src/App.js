@@ -7,12 +7,20 @@ import FormDiv from './FormDiv';
 import { generateAnswer, compareWithAnswer } from './Answer';
 
 function App() {
+  // 상태: input
+  const [input, setInput] = React.useState("");
+
+  // form에서 input이 바뀔 때마다 불릴 함수
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  }
+
   return (
     <div>
       <Title />
-      <InputShow />
+      <InputShow input={input} />
       <TalkSpace />
-      <FormDiv />
+      <FormDiv onChange={handleInputChange} />
     </div>
   )
 }
