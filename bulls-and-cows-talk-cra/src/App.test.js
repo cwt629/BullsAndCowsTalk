@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { compareWithAnswer, getCompareResult } from './Answer';
-import { checkIntermediateInput } from './validate';
+import { checkIntermediateInput, checkSubmittedInput } from './validate';
 import App from './App';
 
 // test('renders learn react link', () => {
@@ -87,5 +87,17 @@ describe('입력 중간점검 테스트', () => {
   test('제대로 된 입력', () => {
     const input = "123";
     expect(checkIntermediateInput(input)).toBe("none");
+  })
+})
+
+describe('입력 최종점검 테스트', () => {
+  test('길이가 3이 아니다', () => {
+    const input = "12";
+    expect(checkSubmittedInput(input)).toBe("length");
+  })
+
+  test('길이가 3인 올바른 입력', () => {
+    const input = "123";
+    expect(checkSubmittedInput(input)).toBe("none");
   })
 })

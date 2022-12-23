@@ -58,3 +58,20 @@ export function checkIntermediateInput(input) {
 
     return "none";
 }
+
+/**
+ * 최종적으로 제출된 입력이 올바른지 판단하는 함수
+ * @param {string} input 
+ * @returns {string} 문제가 있는 부분을 일컫는 문자열
+ */
+export function checkSubmittedInput(input) {
+    if (startsWithZero(input)) return "zerostart";
+
+    if (isNotNumberInput(input)) return "number";
+
+    if (hasRedundancy(input)) return "redundancy";
+
+    if (hasIncorrectLength(input)) return "length";
+
+    return "none";
+}
