@@ -18,10 +18,8 @@ export const gameExplanation = (
     </li>
 )
 
-export function generateTalksAboutInput(input, answer, counter) {
+export function generateTalksAboutInput(input, result, counter) {
     let talks = [];
-
-    const result = getCompareResult(input, answer);
 
     // input과 guide에 대해 메시지 추가
     talks.push((
