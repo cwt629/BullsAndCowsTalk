@@ -4,12 +4,17 @@ import Title from './Title';
 import InputShow from './InputShow';
 import TalkSpace from './TalkSpace';
 import FormDiv from './FormDiv';
-import { generateAnswer, compareWithAnswer } from './Answer';
 import { checkSubmittedInput, alertInvalidInput } from './validate';
+import { gameExplanation, generateTalksAboutInput } from './Talks';
+import { generateAnswer } from './Answer';
 
 function App() {
-  // 상태: input
-  const [input, setInput] = React.useState("");
+
+  const [answer, setAnswer] = React.useState(generateAnswer()); // 상태: answer
+  const [input, setInput] = React.useState("");  // 상태: input
+  const [counter, setCounter] = React.useState(0);  // 상태: counter(시도 횟수)
+  const [talks, setTalks] = React.useState([gameExplanation]);  // 상태: talk
+
 
   // form에서 input이 바뀔 때마다 불릴 함수
   const handleInputChange = (e) => {
@@ -23,7 +28,8 @@ function App() {
     const validation = checkSubmittedInput(input); // input에 있는 문제점 받아옴
 
     if (validation === "none") {
-      alert("올바른 입력!"); // TODO: TalkSpace의 톡에 대한 상태를 변화시켜라.
+      setCounter(counter + 1);
+      setTalks([...talks, ...generateTalksAboutInput(input, answer, counter)]);
     }
     else alertInvalidInput(validation);
   }
@@ -32,7 +38,7 @@ function App() {
     <div>
       <Title />
       <InputShow input={input} />
-      <TalkSpace />
+      <TalkSpace talks={talks} />
       <FormDiv handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </div>
   )
