@@ -13,6 +13,7 @@ function App() {
   const [answer, setAnswer] = React.useState(generateAnswer()); // 상태: answer
   const [input, setInput] = React.useState("");  // 상태: input
   const [counter, setCounter] = React.useState(0);  // 상태: counter(시도 횟수)
+  const [log, setLog] = React.useState([]); // 상태: 입력했던 숫자들
   const [talks, setTalks] = React.useState([gameExplanation]);  // 상태: talk
 
 
@@ -25,11 +26,12 @@ function App() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const validation = checkSubmittedInput(input); // input에 있는 문제점 받아옴
+    const validation = checkSubmittedInput(input, log); // input에 있는 문제점 받아옴
 
     if (validation === "none") {
       setCounter(counter + 1);
       setTalks([...talks, ...generateTalksAboutInput(input, answer, counter)]);
+      setLog([...log, input]);
     }
     else alertInvalidInput(validation);
   }
@@ -37,7 +39,7 @@ function App() {
   return (
     <div>
       <Title />
-      <InputShow input={input} />
+      <InputShow input={input} log={log} />
       <TalkSpace talks={talks} />
       <FormDiv handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </div>

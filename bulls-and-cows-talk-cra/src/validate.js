@@ -47,14 +47,17 @@ function hasIncorrectLength(input) {
 /**
  * 입력이 바뀔 때마다 호출되어 해당 입력이 올바른지 판단하는 함수
  * @param {string} input 
+ * @param {string[]} log 사용자가 입력했던 숫자들
  * @returns {string} 문제가 있는 부분을 일컫는 문자열
  */
-export function checkIntermediateInput(input) {
+export function checkIntermediateInput(input, log) {
     if (startsWithZero(input)) return "zerostart";
 
     if (isNotNumberInput(input)) return "number";
 
     if (hasRedundancy(input)) return "redundancy";
+
+    if (log.includes(input)) return "sameinput";
 
     return "none";
 }
@@ -62,9 +65,10 @@ export function checkIntermediateInput(input) {
 /**
  * 최종적으로 제출된 입력이 올바른지 판단하는 함수
  * @param {string} input 
+ * @param {string[]} log 지금까지 입력한 숫자들
  * @returns {string} 문제가 있는 부분을 일컫는 문자열
  */
-export function checkSubmittedInput(input) {
+export function checkSubmittedInput(input, log) {
     if (startsWithZero(input)) return "zerostart";
 
     if (isNotNumberInput(input)) return "number";
@@ -72,6 +76,8 @@ export function checkSubmittedInput(input) {
     if (hasRedundancy(input)) return "redundancy";
 
     if (hasIncorrectLength(input)) return "length";
+
+    if (log.includes(input)) return "sameinput";
 
     return "none";
 }
@@ -92,6 +98,10 @@ export function alertInvalidInput(validation) {
 
         case "length":
             alert("숫자는 3자리 자연수여야 합니다.");
+            return;
+
+        case "sameinput":
+            alert("이미 같은 입력이 존재합니다.");
             return;
     }
 }

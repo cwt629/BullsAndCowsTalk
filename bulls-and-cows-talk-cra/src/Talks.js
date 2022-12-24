@@ -6,7 +6,7 @@ import { getCompareResult } from "./Answer";
 // }
 
 export const gameExplanation = (
-    <li className="guide">
+    <li className="guide" key="guide">
         숫자야구톡에 오신 것을 환영합니다!<br />
         아래는 게임에 대한 설명입니다.<br />
         1. 자리수가 서로 다른 3자리 숫자를 맞춰야 합니다.<br />
@@ -25,11 +25,11 @@ export function generateTalksAboutInput(input, answer, counter) {
 
     // input과 guide에 대해 메시지 추가
     talks.push((
-        <li className="input">{input}</li>
+        <li className="input" key={input}>{input}</li>
     ));
 
     talks.push((
-        <li className="guide">
+        <li className="guide" key={input + result}>
             입력: {input}<br />
             결과: {result}
         </li>
@@ -38,7 +38,7 @@ export function generateTalksAboutInput(input, answer, counter) {
     // 정답을 맞춘 경우
     if (result === "3 Strike") {
         talks.push((
-            <li className="guide correct">
+            <li className="guide correct" key={input + result + `${counter}`}>
                 축하드립니다! 정답을 맞추셨습니다!<br />
                 시도 횟수: {counter}회
             </li>
