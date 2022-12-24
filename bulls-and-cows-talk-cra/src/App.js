@@ -32,6 +32,7 @@ function App() {
       setCounter(counter + 1);
       setTalks([...talks, ...generateTalksAboutInput(input, answer, counter)]);
       setLog([...log, input]);
+      setInput("");
     }
     else alertInvalidInput(validation);
   }
@@ -41,7 +42,7 @@ function App() {
       <Title />
       <InputShow input={input} log={log} />
       <TalkSpace talks={talks} />
-      <FormDiv handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
+      <FormDiv input={input} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </div>
   )
 }
