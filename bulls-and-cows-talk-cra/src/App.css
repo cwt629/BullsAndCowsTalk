@@ -56,9 +56,10 @@ h1+h3 {
   text-align: center;
 }
 
-ul {
-  max-height: 300px;
-  overflow: auto;
+#talkspace {
+  max-height: 320px;
+  overflow-x: auto;
+  overflow-y: scroll;
 }
 
 ul>li {

@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Title from './Title';
 import InputShow from './InputShow';
 import TalkSpace from './TalkSpace';
@@ -7,15 +7,6 @@ import FormDiv from './FormDiv';
 import { checkSubmittedInput, alertInvalidInput } from './validate';
 import { gameExplanation, generateTalksAboutInput } from './Talks';
 import { generateAnswer, getCompareResult } from './Answer';
-
-/*
-TODO:
-카운터가 계속 이전 상태값으로 talk에 반영이 되어서
-찾아보니 useReducer "안에서" 처리하면 반영되지 않은 값을 볼 수 있다는데...
-그럼 talk이랑 counter를 같이 합쳐서 봐야 하는건가?
-
-이 부분에 대해 고민해보자.
-*/
 
 function App() {
 
@@ -58,11 +49,17 @@ function App() {
     else alertInvalidInput(validation);
   }
 
+  // talks가 바뀔 때마다 스크롤이 내려가도록 useRef와 useEffect 활용
+  const bottomRef = React.useRef(null);
+  React.useEffect(() => {
+    if (talks.length > 1) bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [talks]);
+
   return (
     <div>
       <Title />
       <InputShow input={input} log={log} />
-      <TalkSpace talks={talks} setCorrectFlag={setCorrectFlag} />
+      <TalkSpace talks={talks} bottomRef={bottomRef} />
       <FormDiv input={input} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </div>
   )
