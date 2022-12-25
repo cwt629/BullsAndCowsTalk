@@ -8,13 +8,22 @@ import { checkSubmittedInput, alertInvalidInput } from './validate';
 import { gameExplanation, generateTalksAboutInput } from './Talks';
 import { generateAnswer, getCompareResult } from './Answer';
 
+/*
+TODO:
+카운터가 계속 이전 상태값으로 talk에 반영이 되어서
+찾아보니 useReducer "안에서" 처리하면 반영되지 않은 값을 볼 수 있다는데...
+그럼 talk이랑 counter를 같이 합쳐서 봐야 하는건가?
+
+이 부분에 대해 고민해보자.
+*/
+
 function App() {
 
   const [answer, setAnswer] = React.useState(generateAnswer()); // 상태: answer
   const [input, setInput] = React.useState("");  // 상태: input
-  const [counter, setCounter] = React.useState(0);  // 상태: counter(시도 횟수)
   const [log, setLog] = React.useState([]); // 상태: 입력했던 숫자들
   const [talks, setTalks] = React.useState([gameExplanation]);  // 상태: talk
+  const [counter, setCounter] = React.useState(0);  // 상태: counter(시도 횟수)
   const [correctFlag, setCorrectFlag] = React.useState(false); // 상태: 정답 맞춤 여부
 
   // form에서 input이 바뀔 때마다 불릴 함수
@@ -36,9 +45,13 @@ function App() {
 
     if (validation === "none") {
       const result = getCompareResult(input, answer);
-      setCounter(counter + 1);
-      setTalks([...talks, ...generateTalksAboutInput(input, result, counter)]);
-      setLog([...log, input]);
+      setCounter((prev) => {
+        const nextCounter = prev + 1;
+        // 바뀐 카운터 값이 talk에 들어가야 함
+        setTalks((prev) => ([...prev, ...generateTalksAboutInput(input, result, nextCounter)]));
+        return nextCounter;
+      })
+      setLog((prev) => ([...prev, input]));
       setCorrectFlag((result === "3 Strike")); // 정답을 맞춘 경우
       setInput("");
     }
