@@ -49,7 +49,7 @@ function getNumbersToShow(input, log) {
     const showboard = getShowboard(input, log);
 
     return showboard.map((num, index) => (
-        <span key={index}>{num}</span>
+        <span key={-index}>{num}</span>
     ))
 }
 

@@ -5,7 +5,7 @@ import InputShow from './InputShow';
 import TalkSpace from './TalkSpace';
 import FormDiv from './FormDiv';
 import { checkSubmittedInput, alertInvalidInput } from './validate';
-import { gameExplanation, generateTalksAboutInput, restartMessage } from './Talks';
+import { gameExplanation, generateTalksAboutInput, getRestartMessage } from './Talks';
 import { generateAnswer, getCompareResult } from './Answer';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     setAnswer(generateAnswer());
     setInput("");
     setLog([]);
-    setTalks([...talks, restartMessage]);
+    setTalks([...talks, getRestartMessage(talks.length)]);
     setCounter(0);
     setCorrectFlag(false);
   }
@@ -50,7 +50,7 @@ function App() {
       setCounter((prev) => {
         const nextCounter = prev + 1;
         // 바뀐 카운터 값이 talk에 들어가야 함
-        setTalks((prev) => ([...prev, ...generateTalksAboutInput(input, result, nextCounter)]));
+        setTalks((prev) => ([...prev, ...generateTalksAboutInput(input, result, nextCounter, talks.length)]));
         return nextCounter;
       })
       setLog((prev) => ([...prev, input]));

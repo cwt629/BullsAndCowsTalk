@@ -11,23 +11,23 @@ export const gameExplanation = (
     </li>
 )
 
-export const restartMessage = (
-    <li className="guide" key="guide2">
+export const getRestartMessage = (logLength) => (
+    <li className="guide" key={"guide" + logLength}>
         게임을 재시작합니다.<br />
         새로 배정된 정답을 찾아보세요!
     </li>
 )
 
-export function generateTalksAboutInput(input, result, counter) {
+export function generateTalksAboutInput(input, result, counter, talkLength) {
     let talks = [];
 
-    // input과 guide에 대해 메시지 추가
+    // input과 guide에 대해 메시지 추가(unique key를 위해 talk length 이용)
     talks.push((
-        <li className="input" key={input}>{input}</li>
+        <li className="input" key={talkLength * 3}>{input}</li>
     ));
 
     talks.push((
-        <li className="guide" key={input + result}>
+        <li className="guide" key={talkLength * 3 + 1}>
             입력: {input}<br />
             결과: {result}
         </li>
@@ -36,7 +36,7 @@ export function generateTalksAboutInput(input, result, counter) {
     // 정답을 맞춘 경우
     if (result === "3 Strike") {
         talks.push((
-            <li className="guide correct" key={input + result + `${counter}`}>
+            <li className="guide correct" key={talkLength * 3 + 2}>
                 축하드립니다! 정답을 맞추셨습니다!<br />
                 게임을 재시작하려면 재시작 버튼을 눌러주세요.<br />
                 <br />
