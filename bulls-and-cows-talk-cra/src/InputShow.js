@@ -1,13 +1,20 @@
 import { checkIntermediateInput } from "./validate"
 
-export default function InputShow({ input, log }) {
+export default function InputShow({ input, log, correctFlag }) {
+    // 정답을 맞춘 경우를 구분한다
+    let message = "정답을 맞추셨습니다!!", messageClass = "correctmsg";
+    if (!correctFlag) {
+        message = getErrorMessage(input, log);
+        messageClass = "error";
+    }
+
     return (
         <div id="inputshow">
             <h2>나의 입력</h2>
             <div>
                 {getNumbersToShow(input, log)}
             </div>
-            <p>{getErrorMessage(input, log)}</p>
+            <p className={messageClass}>{message}</p>
         </div>
     )
 }

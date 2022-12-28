@@ -61,6 +61,10 @@ h1+h3 {
   text-align: center;
 }
 
+#inputshow>.correctmsg {
+  color: green;
+}
+
 #talkspace {
   max-height: 320px;
   overflow-x: auto;

@@ -45,7 +45,9 @@ export function generateTalksAboutInput(input, result, counter) {
         talks.push((
             <li className="guide correct" key={input + result + `${counter}`}>
                 축하드립니다! 정답을 맞추셨습니다!<br />
-                시도 횟수: {counter}회
+                게임을 재시작하려면 재시작 버튼을 눌러주세요.<br />
+                <br />
+                <strong>시도 횟수: {counter}회</strong>
             </li>
         ))
     }

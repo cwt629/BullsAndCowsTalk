@@ -38,7 +38,8 @@ function App() {
 
     // 이미 정답을 맞춘 경우
     if (correctFlag) {
-      restart();
+      if (window.confirm("새 게임을 시작하시겠습니까?"))
+        restart();
       return;
     }
 
@@ -59,7 +60,7 @@ function App() {
     else alertInvalidInput(validation);
   }
 
-  // talks가 바뀔 때마다 스크롤이 내려가도록 useRef와 useEffect 활용
+  // talks가 바뀔 때마다 스크롤이 내려가도록 useEffect 활용
   React.useEffect(() => {
     if (talks.length > 1) {
       let objDiv = document.getElementById("talkspace");
@@ -70,9 +71,9 @@ function App() {
   return (
     <div>
       <Title />
-      <InputShow input={input} log={log} />
+      <InputShow input={input} log={log} correctFlag={correctFlag} />
       <TalkSpace talks={talks} />
-      <FormDiv input={input} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
+      <FormDiv input={input} correctFlag={correctFlag} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </div>
   )
 }
