@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Title from './Title';
 import InputShow from './InputShow';
 import TalkSpace from './TalkSpace';
@@ -50,16 +50,20 @@ function App() {
   }
 
   // talks가 바뀔 때마다 스크롤이 내려가도록 useRef와 useEffect 활용
-  const bottomRef = React.useRef(null);
+  // const bottomRef = React.useRef(null);
   React.useEffect(() => {
-    if (talks.length > 1) bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    //if (talks.length > 1) bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (talks.length > 1) {
+      let objDiv = document.getElementById("talkspace");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    }
   }, [talks]);
 
   return (
     <div>
       <Title />
       <InputShow input={input} log={log} />
-      <TalkSpace talks={talks} bottomRef={bottomRef} />
+      <TalkSpace talks={talks} />
       <FormDiv input={input} handleInputChange={handleInputChange} handleFormSubmit={handleFormSubmit} />
     </div>
   )
