@@ -50,9 +50,7 @@ function App() {
   }
 
   // talks가 바뀔 때마다 스크롤이 내려가도록 useRef와 useEffect 활용
-  // const bottomRef = React.useRef(null);
   React.useEffect(() => {
-    //if (talks.length > 1) bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     if (talks.length > 1) {
       let objDiv = document.getElementById("talkspace");
       objDiv.scrollTop = objDiv.scrollHeight;
@@ -68,13 +66,5 @@ function App() {
     </div>
   )
 }
-
-
-
-
-
-
-
-
 
 export default App;
