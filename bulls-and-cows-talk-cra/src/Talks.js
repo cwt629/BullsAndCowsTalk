@@ -1,10 +1,3 @@
-import { getCompareResult } from "./Answer";
-
-// export const gameExplanation = {
-//     class: "guide",
-//     text: "숫자야구톡에 오신 것을 환영합니다!\n아래는 게임에 대한 설명입니다.\n1. 자리수가 서로 다른 3자리 숫자를 맞춰야 합니다.\n2. 3자리 숫자를 유추하여 입력하면, 다음과 같이 힌트가 주어집니다.\n- 해당 숫자가 존재하고 자리까지 일치하면: Strike\n- 해당 숫자가 다른 자리에 존재하면: Ball\n- 어느 숫자도 정답에 존재하지 않으면: Out\n3. 주어지는 힌트들로 정답을 유추하여 맞춰보세요!"
-// }
-
 export const gameExplanation = (
     <li className="guide" key="guide">
         숫자야구톡에 오신 것을 환영합니다!<br />
