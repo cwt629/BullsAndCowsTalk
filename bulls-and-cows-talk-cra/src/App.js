@@ -5,7 +5,7 @@ import InputShow from './InputShow';
 import TalkSpace from './TalkSpace';
 import FormDiv from './FormDiv';
 import { checkSubmittedInput, alertInvalidInput } from './validate';
-import { gameExplanation, generateTalksAboutInput } from './Talks';
+import { gameExplanation, generateTalksAboutInput, restartMessage } from './Talks';
 import { generateAnswer, getCompareResult } from './Answer';
 
 function App() {
@@ -16,6 +16,16 @@ function App() {
   const [talks, setTalks] = React.useState([gameExplanation]);  // 상태: talk
   const [counter, setCounter] = React.useState(0);  // 상태: counter(시도 횟수)
   const [correctFlag, setCorrectFlag] = React.useState(false); // 상태: 정답 맞춤 여부
+
+  // 게임을 재시작할 때 불릴 함수
+  const restart = () => {
+    setAnswer(generateAnswer());
+    setInput("");
+    setLog([]);
+    setTalks([...talks, restartMessage]);
+    setCounter(0);
+    setCorrectFlag(false);
+  }
 
   // form에서 input이 바뀔 때마다 불릴 함수
   const handleInputChange = (e) => {
@@ -28,7 +38,7 @@ function App() {
 
     // 이미 정답을 맞춘 경우
     if (correctFlag) {
-      alert("이미 정답을 맞추셨습니다!\n새 게임을 진행하려면 페이지를 새로고침해주세요.");
+      restart();
       return;
     }
 

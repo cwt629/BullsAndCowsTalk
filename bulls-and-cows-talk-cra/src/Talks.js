@@ -18,6 +18,13 @@ export const gameExplanation = (
     </li>
 )
 
+export const restartMessage = (
+    <li className="guide" key="guide2">
+        게임을 재시작합니다.<br />
+        새로 배정된 정답을 찾아보세요!
+    </li>
+)
+
 export function generateTalksAboutInput(input, result, counter) {
     let talks = [];
 
