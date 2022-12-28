@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/BullsAndCowsTalk/static/css/main.837955cc.css",
-    "main.js": "/BullsAndCowsTalk/static/js/main.8b52911a.js",
+    "main.js": "/BullsAndCowsTalk/static/js/main.2e828bfd.js",
     "static/js/787.315ec83a.chunk.js": "/BullsAndCowsTalk/static/js/787.315ec83a.chunk.js",
     "index.html": "/BullsAndCowsTalk/index.html",
     "main.837955cc.css.map": "/BullsAndCowsTalk/static/css/main.837955cc.css.map",
-    "main.8b52911a.js.map": "/BullsAndCowsTalk/static/js/main.8b52911a.js.map",
+    "main.2e828bfd.js.map": "/BullsAndCowsTalk/static/js/main.2e828bfd.js.map",
     "787.315ec83a.chunk.js.map": "/BullsAndCowsTalk/static/js/787.315ec83a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.837955cc.css",
-    "static/js/main.8b52911a.js"
+    "static/js/main.2e828bfd.js"
   ]
 }
