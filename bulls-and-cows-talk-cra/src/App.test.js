@@ -71,33 +71,33 @@ describe('입력 중간점검 테스트', () => {
 
   test('0으로 시작', () => {
     const input = "012";
-    expect(checkIntermediateInput(input)).toBe("zerostart");
+    expect(checkIntermediateInput(input, [])).toBe("zerostart");
   })
 
   test('숫자가 아닌 입력', () => {
     const input = "1a";
-    expect(checkIntermediateInput(input)).toBe("number");
+    expect(checkIntermediateInput(input, [])).toBe("number");
   })
 
   test('중복되는 자리수', () => {
     const input = "121";
-    expect(checkIntermediateInput(input)).toBe("redundancy");
+    expect(checkIntermediateInput(input, [])).toBe("redundancy");
   })
 
   test('제대로 된 입력', () => {
     const input = "123";
-    expect(checkIntermediateInput(input)).toBe("none");
+    expect(checkIntermediateInput(input, [])).toBe("none");
   })
 })
 
 describe('입력 최종점검 테스트', () => {
   test('길이가 3이 아니다', () => {
     const input = "12";
-    expect(checkSubmittedInput(input)).toBe("length");
+    expect(checkSubmittedInput(input, [])).toBe("length");
   })
 
   test('길이가 3인 올바른 입력', () => {
     const input = "123";
-    expect(checkSubmittedInput(input)).toBe("none");
+    expect(checkSubmittedInput(input, [])).toBe("none");
   })
 })
